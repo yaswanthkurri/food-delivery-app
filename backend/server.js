@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { connectDB } from "./config/db.js"
+import foodRouter from "./routes/foodRoute.js"
 
 
 //app config
@@ -13,6 +14,10 @@ app.use(cors())//using cors() we can access any backend service from frontend
 
 //db connection
 connectDB();
+
+//API endpoint
+app.use("/api/food",foodRouter);//if a req start with /api/food it send it to foodRouter
+app.use("/images",express.static('uploads'))
 
 app.get("/",(req,res)=>{
 res.end("API is not working :")
