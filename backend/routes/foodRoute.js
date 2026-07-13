@@ -2,6 +2,7 @@ import express from "express"
 import { addfood } from '../controllers/foodContoller.js'
 import multer from "multer" //image storage system
 import { foodlist } from "../controllers/foodContoller.js";
+import { removefood } from "../controllers/foodContoller.js";
 
 const foodRouter=express.Router();
 // foodRouter.post("/add",addfood);
@@ -46,4 +47,5 @@ foodRouter.post(
 );
 
 foodRouter.get("/list",foodlist);
+foodRouter.post("/remove",removefood);
 export default foodRouter;
