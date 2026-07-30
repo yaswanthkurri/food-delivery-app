@@ -6,6 +6,7 @@ import Cart from './pages/Cart/Cart'
 import Placeorder from './pages/Placeorder/Placeorder'
 import Footer from './components/Footer/Footer'
 import Login_popup from './components/Loginpopup/Login_popup'
+
 const App = () => {
   const[showlogin,setshowlogin]=useState(false);
   return (

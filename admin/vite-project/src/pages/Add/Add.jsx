@@ -2,9 +2,10 @@ import { assets } from '../../assets/assets'
 import './Add.css'
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
+import { toast } from 'react-toastify'
 
-const Add = () => {
-  const url="http://localhost:4000";
+const Add = ({url}) => {
+  
   const [image,setimage]=useState(false);
   const [data,setdata]=useState({
     name:"",
@@ -63,10 +64,10 @@ if(response.data.success){ //after successfully adding data to database reset da
     }
   )
   setimage(false);
-
+  toast.success(response.data.message); //gives notification msg after adding food
 }
 else{
-  
+  toast.error(response.data.message);
 }
   }
 //   useEffect(()=>{

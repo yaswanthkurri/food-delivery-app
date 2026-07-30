@@ -1,5 +1,5 @@
 import './Order.css'
-const Order = () => {
+const Order = ({url}) => {
   return (
     <div>
       
