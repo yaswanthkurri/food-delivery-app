@@ -3,6 +3,11 @@ import cors from "cors"
 import { connectDB } from "./config/db.js"
 import foodRouter from "./routes/foodRoute.js"
 import userRouter from "./routes/userRoute.js"
+import 'dotenv/config.js' //This is a shorthand way of loading environment variables from a .env file.
+//otenv automatically reads the .env file and stores the values in:process.env like below
+//process.env.PORT;
+//process.env.JWT_SECRET;
+
 
 
 //app config
