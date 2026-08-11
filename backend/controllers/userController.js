@@ -9,7 +9,23 @@ import validator from "validator"
 
 //login user
 const loginUser=async(req,res)=>{
-    
+    const {email,password}=req.body;
+    try {
+        const user=await userModel.findOne({email});//— A method that searches the database for ONE document matching the criteria. 
+        //In this case, it's looking for a user with an email that matches the value of the email variable.
+        if(!user){
+return res.json({success:false,message:"User doesn't exist"});
+        }
+        const isMatch=await bcrypt.compare(password,user.password);//it compares hashed password and orginal by changing hashed to original and compare
+        if(!isMatch){
+            return res.json({success:false,message:"Invalid Credentials"});
+        }
+        const token=createToken(user._id);
+        res.json({success:true,token});
+    } catch (error) {
+        console.log(error);
+        res.json({success:true,message:"Error"});
+    }
 
 }
 //create token
