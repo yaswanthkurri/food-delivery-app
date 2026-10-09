@@ -6,7 +6,8 @@ const frontend_url=process.env.FRONTEND_URL || "http://localhost:5174";
 //placing order using frontend
 const placeOrder=async(req,res)=>{
 try {
-    const stripe=new Stripe(process.env.STRIPE_SECRET_KEY);
+    const stripeKey=process.env.STRIPE_SECRET_KEY || process.env.STRIPE_KEY;
+    const stripe=new Stripe(stripeKey);
     const newOrder=new orderModel({
         userId:req.body.userId,
         items:req.body.items,
