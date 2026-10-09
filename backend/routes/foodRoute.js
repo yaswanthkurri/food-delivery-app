@@ -3,6 +3,7 @@ import { addfood } from '../controllers/foodContoller.js'
 import multer from "multer" //image storage system
 import { foodlist } from "../controllers/foodContoller.js";
 import { removefood } from "../controllers/foodContoller.js";
+import { fileURLToPath } from "node:url";
 
 const foodRouter=express.Router();
 // foodRouter.post("/add",addfood);
@@ -11,7 +12,7 @@ const foodRouter=express.Router();
 const storage = multer.diskStorage({
 
     // Folder where uploaded files will be saved
-    destination: "uploads",
+    destination: process.env.VERCEL ? "/tmp" : fileURLToPath(new URL("../uploads", import.meta.url)),
 
     // Function to generate the filename for the uploaded file
     filename: (req, file, cb) => {
