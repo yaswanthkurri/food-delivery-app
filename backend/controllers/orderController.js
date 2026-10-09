@@ -2,7 +2,7 @@ import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import Stripe from "stripe";
 
-const frontend_url="http://localhost:5174";
+const frontend_url=process.env.FRONTEND_URL || "http://localhost:5174";
 //placing order using frontend
 const placeOrder=async(req,res)=>{
 try {
