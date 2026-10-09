@@ -7,7 +7,7 @@ const Verify=() =>{
     const[searchparams,setsearchparams]=useSearchParams();
     const success=searchparams.get("success");
     const orderId=searchparams.get("orderId");
-    const url ="http://localhost:4000";
+    const url=(import.meta.env.VITE_API_URL || "http://localhost:4000").replace(/\/$/, "");
     const navigate=useNavigate();
     const verifyPayment=async()=>{
 const response=await axios.post(url+"/api/order/verify",{success,orderId});
